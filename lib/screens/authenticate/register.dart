@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:pneumapp/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   
   // We are passing the toggleView property through authenticate.dart file itself as a param, 
   // therefore it must be passed as a widget instead of a state
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
+
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
+  final AuthService _auth = AuthService();
 
-  //Extract instance of the AuthService class to use signIn, Register etc functions
-  final  AuthService _authInstance = AuthService();
-  // Text field state
+// Text field state
   String email =  '';
   String password = '';
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
         elevation: 0.0,
-        title: Text("Welcome to PneumApp"),
+        title: Text("Register to PneumApp"),
       ),
         body:  Container(
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
@@ -51,24 +51,26 @@ class _SignInState extends State<SignIn> {
                     ),
                     SizedBox(height:20.0),
                     RaisedButton(
-                      color: Colors.blue[700],
-                      child: Text(' Sign in', 
+                      color: Colors.pink[400],
+                      child: Text(' Register ', 
                                   style: TextStyle(color: Colors.white) 
                                   ),
                       onPressed: () async{
                           print(email);
                           print(password);
-                      },
+                      },                      
                       ),
                     RaisedButton(
-                       color: Colors.transparent,
-                      child: Text('Registrate aqui', 
-                                  style: TextStyle(color: Colors.white) 
-                                  ),
-                      onPressed: () {
+                      color: Colors.blue[700],
+                      child: Text('Login',
+                                style: TextStyle(color: Colors.white)
+                              ),
+                      onPressed: (){
                         widget.toggleView();
-                      },                    
+
+                      },
                     ),
+
                   ],
                 ),
               
@@ -76,8 +78,6 @@ class _SignInState extends State<SignIn> {
 
         ) ,
     );
-}
-}
 
-      
-     
+  }
+}
