@@ -16,6 +16,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
 // Text field state
   String email =  '';
@@ -31,18 +32,22 @@ class _RegisterState extends State<Register> {
         elevation: 0.0,
         title: Text("Register to PneumApp"),
       ),
-        body:  Container(
+        body:  Container(          
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
               child: Form(
+                key: _formKey,
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 20.0),
-                      TextFormField(onChanged: (val){
+                      TextFormField(
+                        validator: (val) => val.isEmpty ? 'Enter an email': null,
+                        onChanged: (val){
                              setState(()=> email = val);
                       }  
                     ),                    
                     SizedBox(height: 20.0),
-                    TextFormField(
+                    TextFormField(                      
+                      validator: (val) => val.length <6 ? 'Enter a password 6+ chars long': null,
                       obscureText: true,
                       onChanged: (val){                            
                              setState(()=> password = val);
@@ -56,8 +61,12 @@ class _RegisterState extends State<Register> {
                                   style: TextStyle(color: Colors.white) 
                                   ),
                       onPressed: () async{
-                          print(email);
-                          print(password);
+                        // use keyform to validate form
+                          if(_formKey.currentState.validate()){
+                            print(email);
+                            print(password);
+                          }
+
                       },                      
                       ),
                     RaisedButton(
