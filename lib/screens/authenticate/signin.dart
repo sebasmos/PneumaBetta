@@ -12,6 +12,9 @@ class _SignInState extends State<SignIn> {
 
   //Extract instance of the AuthService class to use signIn, Register etc functions
   final  AuthService _authInstance = AuthService();
+  // Text field state
+  String email =  '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +27,38 @@ class _SignInState extends State<SignIn> {
       ),
         body:  Container(
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
-              child: RaisedButton(
-                child: Text("Sign in Anonimously"),
-                onPressed: () async{
-                  // Result is dynamic because it can be user or null and we use await since it is an asychr prcss
-                  // use the service
-                  dynamic result = await _authInstance.signInAnonymo();
-                  if(result == null){
-                    print('We couldnt sign in');
-                  }else{
-                    print('Signed in');
-                    print(result.uid);
-                  }
-                },
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 20.0),
+                      TextFormField(onChanged: (val){
+                             setState(()=> email = val);
+                      }  
+                    ),                    
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      obscureText: true,
+                      onChanged: (val){                            
+                             setState(()=> password = val);
+
+                      },
+                    ),
+                    SizedBox(height:20.0),
+                    RaisedButton(
+                      color: Colors.pink[400],
+                      child: Text(' Sign in', 
+                                  style: TextStyle(color: Colors.white) 
+                                  ),
+                      onPressed: () async{
+                        print(email);
+                          print(password);
+
+                      },
+                      
+                      )
+                  ],
+                ),
+              
               ),
 
         ) ,
