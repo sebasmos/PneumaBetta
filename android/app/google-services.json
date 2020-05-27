@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "589890623600",
+    "firebase_url": "https://pneumaflutter.firebaseio.com",
+    "project_id": "pneumaflutter",
+    "storage_bucket": "pneumaflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589890623600:android:2384dcc56133c1594c7cb5",
+        "android_client_info": {
+          "package_name": "com.example.pneumapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589890623600-iafohom7th3bcma1di48cgdho0ttphao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxIvMCcmTICFcK5Jn8l3YgkdrzkJuWDIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589890623600-iafohom7th3bcma1di48cgdho0ttphao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
