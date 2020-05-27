@@ -21,6 +21,7 @@ class _RegisterState extends State<Register> {
 // Text field state
   String email =  '';
   String password = '';
+  String error = '';
 
 
   @override
@@ -63,12 +64,19 @@ class _RegisterState extends State<Register> {
                       onPressed: () async{
                         // use keyform to validate form
                           if(_formKey.currentState.validate()){
-                            print(email);
-                            print(password);
+                            dynamic result = await _auth.registerEmailPassword(email, password);
+                            if (result == null){
+                                    setState (()=> error = 'Correo incorrecto, porfavor incresar un correo valido');
+                            }
                           }
 
                       },                      
                       ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      error,
+                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    ),
                     RaisedButton(
                       color: Colors.blue[700],
                       child: Text('Login',
