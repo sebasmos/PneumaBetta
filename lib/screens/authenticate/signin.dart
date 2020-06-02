@@ -22,6 +22,7 @@ class _SignInState extends State<SignIn> {
   // Text field state
   String email =  '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,6 @@ class _SignInState extends State<SignIn> {
                       obscureText: true,
                       onChanged: (val){                            
                              setState(()=> password = val);
-
                       },
                     ),
                     SizedBox(height:20.0),
@@ -61,8 +61,12 @@ class _SignInState extends State<SignIn> {
                                   style: TextStyle(color: Colors.white) 
                                   ),
                       onPressed: () async{
-                          print(email);
-                          print(password);
+                          if(_formKey.currentState.validate()){
+                            dynamic result = await _auth.signInWithEmailPassword(email, password);
+                            if (result == null){
+                                    setState (()=> error = 'Error de inicio de secion - falla en credenciales');
+                            }
+                          }       
                       },
                       ),
                     RaisedButton(
