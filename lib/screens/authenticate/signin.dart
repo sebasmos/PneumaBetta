@@ -17,7 +17,8 @@ class _SignInState extends State<SignIn> {
 
 
   //Extract instance of the AuthService class to use signIn, Register etc functions
-  final  AuthService _authInstance = AuthService();
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
   // Text field state
   String email =  '';
   String password = '';
@@ -33,16 +34,20 @@ class _SignInState extends State<SignIn> {
       ),
         body:  Container(
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
-              child: Form(
+              child: Form(                
+                key: _formKey,
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 20.0),
-                      TextFormField(onChanged: (val){
+                      TextFormField(                
+                        validator: (val) => val.isEmpty ? 'Enter an email': null,
+                        onChanged: (val){
                              setState(()=> email = val);
                       }  
                     ),                    
                     SizedBox(height: 20.0),
-                    TextFormField(
+                    TextFormField(                      
+                      validator: (val) => val.length <6 ? 'Enter a password 6+ chars long': null,
                       obscureText: true,
                       onChanged: (val){                            
                              setState(()=> password = val);
