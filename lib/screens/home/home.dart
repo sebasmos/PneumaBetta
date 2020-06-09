@@ -8,15 +8,16 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      
+        appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: new IconThemeData(color: Colors.blue),
         title:Image.asset(
-                'assets/logo.jpeg',
+                'assets/LOGOFINAL.png',
                 fit: BoxFit.cover,
                 height: 30.0,
               ),
         centerTitle: true,
+       
         actions: <Widget>[
            FlatButton.icon(
               icon: Icon(Icons.person),              
@@ -37,7 +38,7 @@ class Home extends StatelessWidget {
               ),
               accountEmail: new Text("dsgarcia@unicauca.edu.co"),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage("https://a.wattpad.com/cover/124081801-352-k598788.jpg"),
+                backgroundImage: NetworkImage("https://static.iris.net.co/semana/upload/images/2020/6/1/675397_1.jpg"),
               ),
               decoration: new BoxDecoration(color: Colors.blue[700]),
             ),

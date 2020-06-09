@@ -27,11 +27,13 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.blue[100],
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
-        elevation: 0.0,
-        title: Text("Register to PneumApp"),
+           title:Image.asset(
+                'assets/logo.jpeg',
+                fit: BoxFit.cover,
+                height: 30.0,
+              ),
+        centerTitle: true,      
       ),
         body:  Container(          
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
