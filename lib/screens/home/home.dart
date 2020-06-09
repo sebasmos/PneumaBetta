@@ -10,21 +10,13 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        iconTheme: new IconThemeData(color: Colors.blue),
         title:Image.asset(
                 'assets/logo.jpeg',
                 fit: BoxFit.cover,
                 height: 30.0,
               ),
         centerTitle: true,
-        leading: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: IconButton(
-            icon: Icon(Icons.menu, color: Colors.blue,),
-            onPressed: () {
-              print('Click leading');
-            },
-          ),
-        ),
         actions: <Widget>[
            FlatButton.icon(
               icon: Icon(Icons.person),              
@@ -45,7 +37,7 @@ class Home extends StatelessWidget {
               ),
               accountEmail: new Text("dsgarcia@unicauca.edu.co"),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage("https://static.iris.net.co/semana/upload/images/2020/6/1/675397_1.jpg"),
+                backgroundImage: NetworkImage("https://a.wattpad.com/cover/124081801-352-k598788.jpg"),
               ),
               decoration: new BoxDecoration(color: Colors.blue[700]),
             ),
