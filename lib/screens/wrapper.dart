@@ -12,7 +12,7 @@ class Wrapper extends StatelessWidget {
       // Use Provider to access data and track if user is signed in or out
       final user = Provider.of<User>(context);      
       if(user == null){
-        return Home();
+        return Authenticate();
       }else{
         return SignIn();
       }

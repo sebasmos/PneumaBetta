@@ -26,16 +26,23 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return  Scaffold(
       appBar: AppBar(
            title:Image.asset(
-                'assets/logo.jpeg',
+                'assets/LOGOFINAL.png',
                 fit: BoxFit.cover,
                 height: 30.0,
               ),
         centerTitle: true,      
       ),
-        body:  Container(          
+        body:  Container(  
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background.png'),
+              fit: BoxFit.cover,              
+            ),
+          ),        
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
               child: Form(
                 key: _formKey,
@@ -57,6 +64,8 @@ class _RegisterState extends State<Register> {
 
                       },
                     ),
+                    //  Aqui tengo que agregar otras features del usuario / elegir bien!!
+                    
                     SizedBox(height:20.0),
                     RaisedButton(
                       color: Colors.pink[400],

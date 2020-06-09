@@ -7,26 +7,19 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       
         appBar: AppBar(
         backgroundColor: Colors.white,
+        iconTheme: new IconThemeData(color: Color.fromRGBO(29, 100, 154,1)),
         title:Image.asset(
                 'assets/LOGOFINAL.png',
                 fit: BoxFit.cover,
                 height: 30.0,
               ),
         centerTitle: true,
-       
-        actions: <Widget>[
-           FlatButton.icon(
-              icon: Icon(Icons.person),              
-              label: Text("Loggout"),
-              onPressed: ()async{
-                await _auth.signOutService();
-              },
-             )
-        ],
+
       ),
       drawer: new Drawer(
         child: ListView(
@@ -53,6 +46,9 @@ class Home extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text("Salir"),
+              onTap: ()async{
+                await _auth.signOutService();
+              },
             ),
           ],
         )

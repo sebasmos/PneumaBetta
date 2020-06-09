@@ -25,18 +25,34 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.blue[100],
-      appBar: AppBar(
-        backgroundColor: Colors.blue[400],
-        elevation: 0.0,
-        title: Text("Welcome to PneumApp"),
-      ),
+      
         body:  Container(
+              decoration: BoxDecoration(
+                image:DecorationImage(
+                  image: AssetImage("assets/background.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+
               padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
-              child: Form(                
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Welcome to ",
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 37),
+                  ),
+                 Image.asset(
+                   'assets/LOGOFINAL.png',
+                   fit: BoxFit.cover,
+                   height: 88,
+                 ),
+                Form(                
                 key: _formKey,
                 child: Column(
+                
                   children: <Widget>[
                     SizedBox(height: 20.0),
                       TextFormField(                
@@ -54,33 +70,52 @@ class _SignInState extends State<SignIn> {
                       },
                     ),
                     SizedBox(height:20.0),
-                    RaisedButton(
-                      color: Colors.blue[700],
-                      child: Text(' Sign in', 
-                                  style: TextStyle(color: Colors.white) 
-                                  ),
-                      onPressed: () async{
-                          if(_formKey.currentState.validate()){
-                            dynamic result = await _auth.signInWithEmailPassword(email, password);
-                            if (result == null){
-                                    setState (()=> error = 'Error de inicio de secion - falla en credenciales');
-                            }
-                          }       
-                      },
+                
+                   Container(
+                     width: size.width * 0.8,
+                     child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: FlatButton(
+                                padding: EdgeInsets.symmetric(vertical:20, horizontal: 40),
+                                color: Colors.blue[700],
+                                child: Text(' Sign in', 
+                                          style: TextStyle(color: Colors.white) 
+                                          ),
+                                onPressed: () async{
+                                if(_formKey.currentState.validate()){
+                                    dynamic result = await _auth.signInWithEmailPassword(email, password);
+                                  if (result == null){
+                                            setState (()=> error = 'Error de inicio de secion - falla en credenciales');
+                                  }
+                                }       
+                               },
+                              ),
+                     ),
+                   ),
+                    
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical:10),
+                      width: size.width * 0.8,
+                      child: ClipRRect(                      
+                                borderRadius: BorderRadius.circular(29),
+                                child: FlatButton(
+                                padding: EdgeInsets.symmetric(vertical:20, horizontal: 40),
+                                color: Colors.grey[700],
+                                child: Text('Registrate aqui', 
+                                            style: TextStyle(color: Colors.white) 
+                                            ),
+                                onPressed: () {
+                                  widget.toggleView();
+                          },                    
+                        ),
                       ),
-                    RaisedButton(
-                       color: Colors.transparent,
-                      child: Text('Registrate aqui', 
-                                  style: TextStyle(color: Colors.white) 
-                                  ),
-                      onPressed: () {
-                        widget.toggleView();
-                      },                    
                     ),
                   ],
                 ),
               
               ),
+
+              ],),
 
         ) ,
       
