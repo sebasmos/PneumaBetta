@@ -64,39 +64,62 @@ class _RegisterState extends State<Register> {
 
                       },
                     ),
-                    //  Aqui tengo que agregar otras features del usuario / elegir bien!!
                     
+                    //  Aqui tengo que agregar otras features del usuario / elegir bien!!
+                    SizedBox(height: 20.0),
+                    TextFormField(),
+                    SizedBox(height: 20.0),
+                    TextFormField(),
+                    SizedBox(height: 20.0),
+                    TextFormField(),
+                    SizedBox(height: 20.0),
+                    TextFormField(),
+                    // TODO
                     SizedBox(height:20.0),
-                    RaisedButton(
-                      color: Colors.pink[400],
-                      child: Text(' Register ', 
-                                  style: TextStyle(color: Colors.white) 
-                                  ),
-                      onPressed: () async{
-                        // use keyform to validate form
-                          if(_formKey.currentState.validate()){
-                            dynamic result = await _auth.registerEmailPassword(email, password);
-                            if (result == null){
-                                    setState (()=> error = 'Correo incorrecto, porfavor incresar un correo valido');
-                            }
-                          }
+                    Container(
+                      width: size.width * 0.8,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: RaisedButton(
+                          padding: EdgeInsets.symmetric(vertical:20, horizontal: 20),
+                          color: Colors.pink[400],
+                          child: Text(' Register ', 
+                                      style: TextStyle(color: Colors.white) 
+                                      ),
+                          onPressed: () async{
+                            // use keyform to validate form
+                              if(_formKey.currentState.validate()){
+                                dynamic result = await _auth.registerEmailPassword(email, password);
+                                if (result == null){
+                                        setState (()=> error = 'Correo incorrecto, porfavor ingresar un correo valido');
+                                }
+                              }
 
-                      },                      
+                          },                      
+                          ),
                       ),
+                    ),
                     SizedBox(height: 20.0),
                     Text(
                       error,
                       style: TextStyle(color: Colors.red, fontSize: 14.0),
                     ),
-                    RaisedButton(
-                      color: Colors.blue[700],
-                      child: Text('Login',
-                                style: TextStyle(color: Colors.white)
-                              ),
-                      onPressed: (){
-                        widget.toggleView();
+                    Container(
+                      width: size.width * 0.8,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: FlatButton(
+                          padding: EdgeInsets.symmetric(vertical:20, horizontal:20),
+                          color: Colors.blue[700],
+                          child: Text('Login',
+                                    style: TextStyle(color: Colors.white)
+                                  ),
+                          onPressed: (){
+                            widget.toggleView();
 
-                      },
+                          },
+                        ),
+                      ),
                     ),
 
                   ],
