@@ -15,7 +15,6 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 
-
   //Extract instance of the AuthService class to use signIn, Register etc functions
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
