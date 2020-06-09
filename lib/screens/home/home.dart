@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pneumapp/services/auth.dart';
 
-
 class Home extends StatelessWidget {
 
   final AuthService _auth =AuthService();
