@@ -18,10 +18,8 @@ class MyApp extends StatelessWidget {
       //AuthService has the Stream object we created to detect changes from firebase, which we use here as user
       value:AuthService().user,
         child: MaterialApp(
-        
-        home: Wrapper(),
-        
-      ),
+          home: Wrapper(),
+        ),
     );
      
   }
