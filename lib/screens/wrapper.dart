@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pneumapp/models/user.dart';
 import 'package:pneumapp/screens/authenticate/authenticate.dart';
-import 'package:pneumapp/screens/authenticate/signin.dart';
-import 'package:pneumapp/screens/home/home.dart';
 import 'package:provider/provider.dart';
+import 'package:pneumapp/screens/mainApp.dart';
 
 class Wrapper extends StatelessWidget {
   @override
@@ -14,7 +13,7 @@ class Wrapper extends StatelessWidget {
       if(user == null){
         return Authenticate();
       }else{
-        return Home();
+        return Mymainapp();
       }
   
   }

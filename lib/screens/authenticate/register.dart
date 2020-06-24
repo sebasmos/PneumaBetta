@@ -30,7 +30,7 @@ class _RegisterState extends State<Register> {
     return  Scaffold(
       appBar: AppBar(
            title:Image.asset(
-                'assets/LOGOFINAL.png',
+                'assets/images/LOGOFINAL.png',
                 fit: BoxFit.cover,
                 height: 30.0,
               ),
@@ -39,7 +39,7 @@ class _RegisterState extends State<Register> {
         body:  Container(  
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/background.png'),
+              image: AssetImage('assets/images/background.png'),
               fit: BoxFit.cover,              
             ),
           ),        
