@@ -31,7 +31,7 @@ class _SignInState extends State<SignIn> {
         body:  Container(
               decoration: BoxDecoration(
                 image:DecorationImage(
-                  image: AssetImage("assets/background.png"),
+                  image: AssetImage("assets/images/background.png"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -45,7 +45,7 @@ class _SignInState extends State<SignIn> {
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 37),
                   ),
                  Image.asset(
-                   'assets/LOGOFINAL.png',
+                   'assets/images/LOGOFINAL.png',
                    fit: BoxFit.cover,
                    height: 88,
                  ),
