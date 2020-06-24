@@ -60,16 +60,16 @@ class Home extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.all(40),
         child: GridView.count(
           crossAxisCount: 2,
           children: <Widget>[
-            MyMenu(title: "Perfil", icon: Icons.supervised_user_circle, background: Colors.purple),
-            MyMenu(title: "Señales", icon: Icons.supervised_user_circle, background: Colors.yellow),
-            MyMenu(title: "Prediccion Covid-19", icon: Icons.graphic_eq, background: Colors.lightBlue),
-            MyMenu(title: "Chatbot", icon: Icons.chat, background: Colors.pink),
-            MyMenu(title: "Opcion x", icon: Icons.headset_off, background: Colors.orange),
-            MyMenu(title: "Opcion y", icon: Icons.insert_photo, background: Colors.blue),
+            MyMenu(title: "Perfil", icon: Icons.supervised_user_circle, background: Colors.purple,cardID: "1"),
+            MyMenu(title: "Señales", icon: Icons.supervised_user_circle, background: Colors.yellow, cardID: "2"),
+            MyMenu(title: "Prediccion Covid-19", icon: Icons.graphic_eq, background: Colors.lightBlue, cardID: "3"),
+            MyMenu(title: "Chatbot", icon: Icons.chat, background: Colors.pink, cardID: "4"),
+            MyMenu(title: "Opcion x", icon: Icons.headset_off, background: Colors.orange, cardID: "5"),
+            MyMenu(title: "Opcion y", icon: Icons.insert_photo, background: Colors.blue,cardID: "6"),
           ],
         ),
       ),
@@ -78,18 +78,33 @@ class Home extends StatelessWidget {
 }
 
 class MyMenu extends StatelessWidget {
-  MyMenu({this.title, this.icon, this.background});
+  MyMenu({this.title, this.icon, this.background, this.cardID});
   
   final String title;
   final IconData icon;
   final MaterialColor background;
+  final String cardID;
+  
 
   @override
   Widget build(BuildContext context) {
     return Card(
             color: background,
             child: InkWell(
-              onTap: (){},
+              onTap: () => {
+                 
+              if (cardID == "1"){
+              print("Signals card has been pressed then you clicked on Profile") 
+
+              } else if(cardID == "2"){
+              print("Signals card has been pressed then you clicked on Signals")
+                
+              } else if(cardID == "3"){
+              print("Signals card has been pressed then you clicked on Prediction Covid 19")
+              }
+                else {
+                print("Signals card has been pressed then you clicked on OTHER")}
+              },
               splashColor: Colors.green,
               child: Center(
                 child: Column(
