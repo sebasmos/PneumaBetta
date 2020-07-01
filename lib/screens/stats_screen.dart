@@ -38,6 +38,14 @@ class _StatsScreenState extends State<StatsScreen> {
               leading: Icon(Icons.person),
               title: Text("Perfil"),
             ),
+             ListTile(
+              leading: Icon(Icons.help_outline),
+              title: Text("Ayuda"),
+            ),
+            ListTile(
+              leading: Icon(Icons.history),
+              title: Text("Mis ventiladores"),
+            ),
             ListTile(
               leading: Icon(Icons.info),
               title: Text("Información"),

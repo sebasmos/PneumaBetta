@@ -8,6 +8,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      title:Image.asset(
+                'assets/images/logo2.png',
+                fit: BoxFit.cover,
+                height: 30.0,
+              ),
+      centerTitle: true,      
       backgroundColor: Palette.primaryColor,
       elevation: 0.0,
       actions: <Widget>[

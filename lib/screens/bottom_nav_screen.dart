@@ -13,8 +13,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     HomeScreen(),
     StatsScreen(),
     Scaffold(),
-    Scaffold(),
-    Scaffold(),
+    ChatbotScreen(),
+    
   ];
   int _currentIndex = 0;
 

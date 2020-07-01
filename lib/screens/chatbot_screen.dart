@@ -7,12 +7,12 @@ import 'package:pneumapp/widgets/widgets.dart';
 import 'package:pneumapp/widgets/custom_app_bar.dart';
 import 'package:pneumapp/services/auth.dart';
 
-class HomeScreen extends StatefulWidget {
+class ChatbotScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ChatbotScreen createState() => _ChatbotScreen();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ChatbotScreen extends State<ChatbotScreen> {
   String _todoName = "Mostrar datos";
   String _country = 'USA';
   final AuthService _auth = AuthService();
@@ -21,9 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      
       appBar: CustomAppBar(),
-      
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[           
@@ -42,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: Icon(Icons.person),
               title: Text("Perfil"),
             ),
-            ListTile(
+             ListTile(
               leading: Icon(Icons.help_outline),
               title: Text("Ayuda"),
             ),
@@ -72,7 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
           _buildYourOwnTest(screenHeight),
         ],
       ),
-      
     );
   }
 
@@ -94,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  '',
+                  'FAQs',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 25.0,
@@ -108,76 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.03),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  '¿Tienes alguna urgencia medica?',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Text(
-                  'Llámanos si tienes problemas para conectar tu ventilador o tus síntomas son graves, de lo contrario revisa la sección de FAQs',
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 15.0,
-                  ),
-                ),
-                SizedBox(height: screenHeight * 0.03),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    FlatButton.icon(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
-                      ),
-                      onPressed: () async{
-                    //    await _auth.signOutService();
-                     },
-                      color: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      icon: const Icon(
-                        Icons.phone,
-                        color: Colors.white,
-                      ),
-                      label: Text(
-                        'Llamar ahora',
-                        style: Styles.buttonTextStyle,
-                      ),
-                      textColor: Colors.white,
-                    ),
-                    FlatButton.icon(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
-                      ),
-                      onPressed: () {},
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      icon: const Icon(
-                        Icons.chat_bubble,
-                        color: Colors.white,
-                      ),
-                      label: Text(
-                        'Enviar mensaje',
-                        style: Styles.buttonTextStyle,
-                      ),
-                      textColor: Colors.white,
-                    ),
-                  ],
-                ),
-              ],
-            )
+            SizedBox(height: screenHeight * 0.03),            
           ],
         ),
       ),
@@ -192,35 +120,13 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'En caso de emergencia',
+              'Preguntas frecuentes',
               style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: prevention
-                  .map((e) => Column(
-                        children: <Widget>[
-                          Image.asset(
-                            e.keys.first,
-                            height: screenHeight * 0.12,
-                          ),
-                          SizedBox(height: screenHeight * 0.015),
-                          Text(
-                            e.values.first,
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ))
-                  .toList(),
-            ),
+            const SizedBox(height: 20.0),           
           ],
         ),
       ),
@@ -251,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Sigue las recomendaciones',
+                  'Chatea con uno de nuestros \n asesores',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -260,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  'Datos confidenciales',
+                  'Comienza AHORA',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
@@ -270,8 +176,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             )
           ],
+          
         ),
+      
       ),
+      
     );
   }
 }

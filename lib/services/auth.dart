@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pneumapp/models/user.dart';
 
+import 'databases.dart';
+
 class AuthService{
   //Here inside we will create all the methods that will interact with firebase
 
@@ -51,6 +53,9 @@ Future signInWithEmailPassword(String email, String password)async{
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser userEmail = result.user;
+
+      //create the instance of a user to save the register basic data
+      await DatabaseService(uid: userEmail.uid).updateUserData('sebastian', "cajas", 23, "m");
       return _userFromFirebaseUser(userEmail);
     }catch(e){
       print(e.toString());

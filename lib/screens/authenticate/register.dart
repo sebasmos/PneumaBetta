@@ -19,10 +19,11 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
 
 // Text field state
+  String nombres = '';
+  String apellidos = '';
   String email =  '';
   String password = '';
   String error = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class _RegisterState extends State<Register> {
     return  Scaffold(
       appBar: AppBar(
            title:Image.asset(
-                'assets/images/LOGOFINAL.png',
+                'assets/images/logo2.png',
                 fit: BoxFit.cover,
                 height: 30.0,
               ),
@@ -50,7 +51,21 @@ class _RegisterState extends State<Register> {
                   children: <Widget>[
                     SizedBox(height: 20.0),
                       TextFormField(
-                        validator: (val) => val.isEmpty ? 'Enter an email': null,
+                        validator: (val) => val.isEmpty ? 'Ingresar nombres' : null,
+                        onChanged: (val){
+                            setState(() => nombres = val);
+                          },
+                        ),
+                    SizedBox(height: 20.0),
+                      TextFormField(
+                        validator: (val)=> val.isEmpty ? 'Ingresar apellidos': null,
+                        onChanged: (val){
+                          setState(() => apellidos = val);
+                          },
+                        ),
+                    SizedBox(height: 20.0),
+                      TextFormField(
+                        validator: (val) => val.isEmpty ? 'Ingresar un email': null,
                         onChanged: (val){
                              setState(()=> email = val);
                       }  
