@@ -4,4 +4,4 @@ final prevention = [
   {'assets/images/mask.png': 'Wear a\nfacemask'},
 ];
 
-final covidUSADailyNewCases = [108.17, 11.15, 10.02, 101.21, 13.83, 14.16, 14.30];
+final covidUSADailyNewCases = [28.17, 11.15, 10.02, 21.21, 13.83, 14.16, 14.30];

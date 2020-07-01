@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'COVID-19',
+                  'PneumApp',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 25.0,
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Are you feeling sick?',
+                  '¿Tienes problemas para configurar el ventilador?',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 22.0,
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  'If you feel sick with any COVID-19 symptoms, please call or text us immediately for help',
+                  'Llámanos si tienes problemas para conectar tu ventilador tus síntomas son graves, de lo contrario revisa la sección de FAQs',
                   style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 15.0,
