@@ -43,7 +43,7 @@ class _RegisterState extends State<Register> {
               fit: BoxFit.cover,              
             ),
           ),        
-              padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
+          padding: EdgeInsets.symmetric(vertical:20.0, horizontal:50.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -121,12 +121,9 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
-              
               ),
-
         ) ,
     );
 
