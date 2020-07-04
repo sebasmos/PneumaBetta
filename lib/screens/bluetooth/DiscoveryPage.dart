@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import './BluetoothDeviceListEntry.dart';
-
+/* TODO:
+  1. List shouldn't repeat item
+  2. Bonding should show a spinner
+  3. Long press is not user friendly
+ */
 class DiscoveryPage extends StatefulWidget {
   /// If true, discovery starts on page start, otherwise user must press action button.
   final bool start;
