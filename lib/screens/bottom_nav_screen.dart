@@ -6,15 +6,14 @@ class BottomNavScreen extends StatefulWidget {
   @override
   _BottomNavScreenState createState() => _BottomNavScreenState();
 }
-// We require to iterate along the Widget tree several times within BottonNavScreen lifespan with an Index 
+// We require to iterate along the Widget tree several times within BottonNavScreen lifespan with an Index
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screens = [
     HomeScreen(),
     StatsScreen(),
-    Scaffold(),
+    MapScreen(),
     ChatbotScreen(),
-    
   ];
   int _currentIndex = 0;
 
@@ -32,7 +31,12 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         elevation: 0.0,
-        items: [Icons.home, Icons.insert_chart, Icons.add_location, Icons.assistant]
+        items: [
+          Icons.home,
+          Icons.insert_chart,
+          Icons.add_location,
+          Icons.assistant
+        ]
             .asMap()
             .map((key, value) => MapEntry(
                   key,
