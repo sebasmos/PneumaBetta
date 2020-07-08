@@ -31,6 +31,11 @@ dependencies:
   # We add firebase_autn and cloud_firestore to control auth services / check services folder
   firebase_auth: ^0.14.0+5
   cloud_firestore: ^0.12.9+15
+
+  flutter_bluetooth_serial: ^0.2.2
+  scoped_model: ^1.0.1
+  bezier_chart: ^1.0.16
+
   provider: ^3.1.0
   flutter_svg: ^0.17.4
 

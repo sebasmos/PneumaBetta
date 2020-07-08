@@ -4,23 +4,14 @@ class StatsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.125,
       child: Column(
         children: <Widget>[
           Flexible(
             child: Row(
               children: <Widget>[
-                _buildStatCard('Total Cases', '1.81 M', Colors.orange),
-                _buildStatCard('Deaths', '105 K', Colors.red),
-              ],
-            ),
-          ),
-          Flexible(
-            child: Row(
-              children: <Widget>[
-                _buildStatCard('Recovered', '391 K', Colors.green),
-                _buildStatCard('Active', '1.31 M', Colors.lightBlue),
-                _buildStatCard('Critical', 'N/A', Colors.purple),
+                _buildStatCard('Oxygen', '92%', Colors.lightBlue),
+                _buildStatCard('IE', '1.5', Colors.green),
               ],
             ),
           ),
