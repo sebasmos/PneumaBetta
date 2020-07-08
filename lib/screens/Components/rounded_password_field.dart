@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pneumapp/screens/components/text_field_container.dart';
+import 'package:pneumapp/screens/Components/text_field_container.dart';
 import 'package:pneumapp/constant.dart';
 
-class RoundedInputField extends StatelessWidget {
-  final String hintText;
-  final IconData icon;
+class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
-  final bool _validate = false;
-
-  const RoundedInputField({
+  const RoundedPasswordField({
     Key key,
-    this.hintText,
-    this.icon = Icons.person,
     this.onChanged,
   }) : super(key: key);
 
@@ -19,16 +13,20 @@ class RoundedInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
+        obscureText: true,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(
-          /*icon: Icon(
-            icon,
+          hintText: "Contraseña",
+          icon: Icon(
+            Icons.lock,
             color: kPrimaryColor,
-          ),*/
-          hintText: hintText,
+          ),
+          suffixIcon: Icon(
+            Icons.visibility,
+            color: kPrimaryColor,
+          ),
           border: InputBorder.none,
-          errorText: _validate ? 'Value Can\'t Be Empty' : null,
         ),
       ),
     );
