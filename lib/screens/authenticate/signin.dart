@@ -45,7 +45,7 @@ class _SignInState extends State<SignIn> {
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 37),
                   ),
                  Image.asset(
-                   'assets/images/LOGOFINAL.png',
+                   'assets/images/logo1.png',
                    fit: BoxFit.cover,
                    height: 88,
                  ),
@@ -84,6 +84,7 @@ class _SignInState extends State<SignIn> {
                                 onPressed: () async{
                                 if(_formKey.currentState.validate()){
                                     dynamic result = await _auth.signInWithEmailPassword(email, password);
+                                    print("El usuaro esta conectadoi!!!");
                                   if (result == null){
                                             setState (()=> error = 'Error de inicio de secion - falla en credenciales');
                                   }

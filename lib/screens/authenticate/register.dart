@@ -36,12 +36,12 @@ class _RegisterState extends State<Register> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          'assets/images/LOGOFINAL.png',
-          fit: BoxFit.cover,
-          height: 30.0,
-        ),
-        centerTitle: true,
+           title:Image.asset(
+                'assets/images/logo2.png',
+                fit: BoxFit.cover,
+                height: 30.0,
+              ),
+        centerTitle: true,      
       ),
       body: Container(
           decoration: BoxDecoration(
