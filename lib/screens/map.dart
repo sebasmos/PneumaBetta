@@ -2,7 +2,6 @@ import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:pneumapp/config/palette.dart';
 import 'package:pneumapp/config/styles.dart';
-import 'package:pneumapp/data/data.dart';
 import 'package:pneumapp/widgets/widgets.dart';
 import 'package:pneumapp/services/auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
