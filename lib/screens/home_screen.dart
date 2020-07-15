@@ -1,11 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pneumapp/config/palette.dart';
 import 'package:pneumapp/config/styles.dart';
 import 'package:pneumapp/data/data.dart';
+import 'package:pneumapp/models/user.dart';
+import 'package:pneumapp/shared/loading.dart';
 import 'package:pneumapp/widgets/widgets.dart';
 import 'package:pneumapp/widgets/custom_app_bar.dart';
 import 'package:pneumapp/services/auth.dart';
+import 'package:pneumapp/services/databases.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,64 +20,74 @@ class _HomeScreenState extends State<HomeScreen> {
   String _todoName = "Mostrar datos";
   String _country = 'USA';
   final AuthService _auth = AuthService();
+  
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      
-      appBar: CustomAppBar(),
-      
-      drawer: new Drawer(
-        child: ListView(
-          children: <Widget>[           
-            UserAccountsDrawerHeader(
-              accountName: new Text(
-                "David Santiago Garcia",
-                style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-              ),
-              accountEmail: new Text("dsgarcia@unicauca.edu.co"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage("https://static.iris.net.co/semana/upload/images/2020/6/1/675397_1.jpg"),
-              ),
-              decoration: new BoxDecoration(color: Colors.blue[700]),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Perfil"),
-            ),
-            ListTile(
-              leading: Icon(Icons.help_outline),
-              title: Text("Ayuda"),
-            ),
-            ListTile(
-              leading: Icon(Icons.history),
-              title: Text("Mis ventiladores"),
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text("Información"),
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text("Salir"),
-              onTap: ()async{
-                await _auth.signOutService();
-              },
-            ),
-          ],
-        )
-      ),
-      body: CustomScrollView(
-        physics: ClampingScrollPhysics(),
-        slivers: <Widget>[
-          _buildHeader(screenHeight),
-          _buildPreventionTips(screenHeight),
-          _buildYourOwnTest(screenHeight),
-        ],
-      ),
-      
+    final user = Provider.of<User>(context);
+    return StreamBuilder(
+        stream: Firestore.instance.collection('user_data').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return Text("Cargando datos..");
+        return Scaffold(
+
+          appBar: CustomAppBar(),
+
+          drawer: new Drawer(
+              child: ListView(
+                children: <Widget>[
+                  UserAccountsDrawerHeader(
+                    accountName: new Text(
+                      snapshot.data.documents[0]['nombres'],
+                      style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                    ),
+                    accountEmail: new Text("dsgarcia@unicauca.edu.co"),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: NetworkImage("https://static.iris.net.co/semana/upload/images/2020/6/1/675397_1.jpg"),
+                    ),
+                    decoration: new BoxDecoration(color: Colors.blue[700]),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.person),
+                    title: Text("Perfil"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.help_outline),
+                    title: Text("Ayuda"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.history),
+                    title: Text("Mis ventiladores"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text("Información"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text("Salir"),
+                    onTap: ()async{
+                      await _auth.signOutService();
+                    },
+                  ),
+                ],
+              )
+          ),
+          body: CustomScrollView(
+            physics: ClampingScrollPhysics(),
+            slivers: <Widget>[
+              _buildHeader(screenHeight),
+              _buildPreventionTips(screenHeight),
+              _buildYourOwnTest(screenHeight),
+            ],
+          ),
+
+        );
+      }
     );
+
+
   }
 
   SliverToBoxAdapter _buildHeader(double screenHeight) {

@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pneumapp/config/palette.dart';
-import 'package:pneumapp/config/styles.dart';
-import 'package:pneumapp/data/data.dart';
 import 'package:pneumapp/widgets/widgets.dart';
 import 'package:pneumapp/widgets/custom_app_bar.dart';
 import 'package:pneumapp/services/auth.dart';
