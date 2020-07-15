@@ -27,6 +27,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     position = new Position();
+    //Añadiendo manualmente los hospitales
     allMarkers.add(
       Marker(
           markerId: MarkerId("timbio_hospital"),
