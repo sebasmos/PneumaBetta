@@ -2,7 +2,7 @@ import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:pneumapp/config/palette.dart';
 import 'package:pneumapp/config/styles.dart';
-import 'package:pneumapp/data/data.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:pneumapp/widgets/widgets.dart';
 import 'package:pneumapp/services/auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,11 +13,74 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  List<Marker> allMarkers = [];
   final AuthService _auth = AuthService();
   GoogleMapController mapController;
-  final LatLng _center = const LatLng(2.441455, -76.604950);
+  Widget _child;
+  LatLng _center = LatLng(2.441455, -76.604950);
+  Position position;
+
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+  }
+
+  @override
+  void initState() {
+    position = new Position();
+    allMarkers.add(
+      Marker(
+          markerId: MarkerId("timbio_hospital"),
+          draggable: false,
+          onTap: () {
+            print("Marker Tapped");
+          },
+          infoWindow: InfoWindow(title: "Hospital Timbío E.S.E "),
+          position: LatLng(2.354474, -76.685870)),
+    );
+    allMarkers.add(
+      Marker(
+          markerId: MarkerId("popayan_susana_lopez"),
+          draggable: false,
+          onTap: () {
+            print("Marker Tapped");
+          },
+          infoWindow:
+              InfoWindow(title: "Hospital Susana López de Valencia E.S.E."),
+          position: LatLng(2.437406, -76.619241)),
+    );
+    allMarkers.add(
+      Marker(
+          markerId: MarkerId("popayan_hospital_universitario"),
+          draggable: false,
+          onTap: () {
+            print("Marker Tapped");
+          },
+          infoWindow:
+              InfoWindow(title: "Hospital Universitario San Jose Popayan"),
+          position: LatLng(2.450681, -76.596828)),
+    );
+    allMarkers.add(
+      Marker(
+          markerId: MarkerId("popayan_casa_rosada"),
+          draggable: false,
+          onTap: () {
+            print("Marker Tapped");
+          },
+          infoWindow: InfoWindow(title: "Casa Rosada - E.S.E. Popayán"),
+          position: LatLng(2.443891, -76.612943)),
+    );
+
+    getCurrentLocation();
+    super.initState();
+  }
+
+  void getCurrentLocation() async {
+    Position res = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    setState(() {
+      position = res;
+      _center = LatLng(position.latitude, position.longitude);
+    });
   }
 
   @override
@@ -26,7 +89,7 @@ class _MapScreenState extends State<MapScreen> {
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(),
       drawer: new Drawer(
-        child: ListView(
+          child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: new Text(
@@ -67,10 +130,14 @@ class _MapScreenState extends State<MapScreen> {
       )),
       body: GoogleMap(
         onMapCreated: _onMapCreated,
+        myLocationEnabled: true,
+        mapType: MapType.normal,
+        rotateGesturesEnabled: false,
         initialCameraPosition: CameraPosition(
           target: _center,
-          zoom: 11.0,
+          zoom: 12.0,
         ),
+        markers: Set.from(allMarkers),
       ),
     );
   }
