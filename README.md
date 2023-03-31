@@ -46,28 +46,3 @@ Requirements:
 		}
 	
 	
-## Full Application
-
-Refer to this repository.
-
-`git clone https://github.com/sebasmos/PneumApp.git`.
-
-Update dependencies with `npm install` and `npm upgrade`.
-
-Mind that you must keep React navigation with version 3.0.4. 
-
-## Set-up 🤬
-
-Requires NodeJS, NPM and Expo installed.
-Download or clone this repo:
-
-`git clone https://github.com/Kseg97/ibm_platform_communication_examples`
-
-To download just press on the download button and unzip in your working env.
-Run `npm install` and then `npm start` in the *node_server_gen_using_ibm* folder to execute the number generator.
-Run `npm install` and then `npm start` in the *expo_react_client* folder to execute the Expo server and therefore your app in the Android client
-Change *.env* with the team credentials.
-## Artificial ventilator - Bluetooth interface 
-Check our manual for further instructions regarding how to configure your artificial ventilator in our App.
-
-If you have any doubts or suggestions, please let us in sebasmos@ieee.org
